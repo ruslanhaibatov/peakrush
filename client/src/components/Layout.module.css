@@ -1,0 +1,104 @@
+.shell {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.sidebar {
+  width: 220px;
+  min-height: 100vh;
+  background: var(--c-surface);
+  border-right: 1px solid var(--c-border);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  flex-shrink: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1.25rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--c-border);
+}
+.logoIcon { font-size: 2rem; }
+.logoText {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: 0.1em;
+  color: var(--c-accent);
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 0.75rem;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: var(--radius-sm);
+  color: var(--c-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.18s ease;
+}
+.navItem:hover { color: var(--c-text); background: rgba(255,255,255,0.05); }
+.navItem.active { color: var(--c-accent); background: rgba(0,200,255,0.1); }
+.navIcon { font-size: 1.1rem; width: 1.4rem; text-align: center; }
+.navLabel { flex: 1; }
+
+.sidebarFooter {
+  padding: 1rem;
+  border-top: 1px solid var(--c-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.levelBadge { display: flex; flex-direction: column; gap: 0.3rem; }
+.levelNum { font-size: 0.75rem; font-weight: 700; color: var(--c-accent); }
+.xpBar {
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.xpFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--c-accent), #7b2ff7);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+.userRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.userName {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--c-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.logoutBtn { font-size: 0.75rem !important; padding: 0.3rem 0.6rem !important; }
+
+.main {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+}

@@ -1,0 +1,81 @@
+name: PeakRush CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # ── Client ─────────────────────────────────────────────────────────────────
+  client:
+    name: Client Build & Lint
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: client
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: client/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+
+  # ── Server ─────────────────────────────────────────────────────────────────
+  server:
+    name: Server Build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: server/package-lock.json
+      - run: npm ci
+      - run: npm run build
+
+  # ── Python microservice ─────────────────────────────────────────────────────
+  python:
+    name: Python Anti-Cheat
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r scripts/requirements.txt
+      - run: python -c "import anticheat_service"
+        working-directory: scripts
+
+  # ── DB migration check ──────────────────────────────────────────────────────
+  db-lint:
+    name: SQL Schema Lint
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: peakrush_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run schema
+        env:
+          PGPASSWORD: test
+        run: psql -h localhost -U postgres -d peakrush_test -f database/schema.sql

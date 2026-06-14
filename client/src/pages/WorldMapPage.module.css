@@ -1,0 +1,41 @@
+.page { padding: 2rem; max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; animation: fadeIn 0.3s ease; }
+.header { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.title { font-size: clamp(2rem, 5vw, 3rem); }
+
+.layout { display: grid; grid-template-columns: 1fr 360px; gap: 1.5rem; align-items: start; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+
+.mapWrap { position: relative; background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--radius); overflow: hidden; }
+.map { width: 100%; display: block; }
+
+.pulseDot { animation: glow 1.5s ease infinite; }
+
+.legend { display: flex; gap: 1rem; flex-wrap: wrap; padding: 0.75rem 1rem; border-top: 1px solid var(--c-border); background: rgba(0,0,0,0.3); }
+.legendItem { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--c-muted); text-transform: capitalize; }
+.legendDot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+.panel { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--radius); min-height: 400px; }
+
+.panelEmpty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 3rem 2rem; text-align: center; color: var(--c-muted); height: 100%; }
+.panelEmptyIcon { font-size: 3rem; }
+
+.regionDetail { padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+.regionHeader { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
+.diffBadge { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; border: 1px solid; border-radius: 999px; padding: 0.2rem 0.6rem; display: inline-block; margin-bottom: 0.3rem; }
+.regionName { font-size: 1.6rem; line-height: 1.1; }
+.weatherBadge { background: rgba(0,200,255,0.1); border: 1px solid rgba(0,200,255,0.2); border-radius: var(--radius-sm); padding: 0.4rem 0.8rem; font-size: 0.85rem; white-space: nowrap; }
+
+.regionDesc { color: var(--c-muted); font-size: 0.875rem; line-height: 1.6; }
+
+.regionStats { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.5rem; }
+.regionStats > div { background: var(--c-surface2); border-radius: var(--radius-sm); padding: 0.6rem; display: flex; flex-direction: column; gap: 0.2rem; }
+.regionStats span { font-size: 0.7rem; }
+.regionStats strong { font-size: 0.9rem; }
+
+.challengeHeading { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-muted); }
+.challengeList { display: flex; flex-direction: column; gap: 0.5rem; max-height: 260px; overflow-y: auto; }
+.challengeItem { display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 0.75rem; background: var(--c-surface2); border: 1px solid var(--c-border); border-radius: var(--radius-sm); cursor: pointer; transition: border-color 0.18s, transform 0.18s; }
+.challengeItem:hover { border-color: var(--c-accent); transform: translateX(3px); }
+.challengeName { font-size: 0.875rem; font-weight: 600; }
+.challengeMeta { font-size: 0.75rem; color: var(--c-muted); text-transform: capitalize; }
+.challengeArrow { margin-left: auto; color: var(--c-muted); }

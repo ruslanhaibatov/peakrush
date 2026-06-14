@@ -1,0 +1,68 @@
+.page { padding: 1.5rem; max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; animation: fadeIn 0.3s ease; }
+.loading { display: flex; align-items: center; justify-content: center; min-height: 60vh; gap: 0.75rem; color: var(--c-muted); font-size: 1.2rem; }
+
+.topBar { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.challengeInfo { flex: 1; }
+.challengeTitle { font-size: clamp(1.4rem, 3vw, 2rem); line-height: 1; }
+.challengeMeta { display: flex; gap: 0.5rem; font-size: 0.8rem; color: var(--c-muted); margin-top: 0.3rem; }
+.medals { display: flex; gap: 1.2rem; font-size: 0.9rem; font-weight: 700; background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--radius-sm); padding: 0.5rem 1rem; }
+
+.setup { display: flex; flex-direction: column; gap: 1.5rem; background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--radius); padding: 2rem; }
+.desc { color: var(--c-muted); line-height: 1.6; }
+
+.sportPicker { display: flex; flex-direction: column; gap: 0.75rem; }
+.sportPickerLabel { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-muted); }
+.sportBtns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.sportBtn { padding: 0.6rem 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--c-border); background: var(--c-surface2); color: var(--c-muted); cursor: pointer; font-size: 0.875rem; font-weight: 600; text-transform: capitalize; transition: all 0.18s; }
+.sportBtn:hover { border-color: var(--c-accent); color: var(--c-text); }
+.sportBtnActive { border-color: var(--c-accent); color: var(--c-accent); background: rgba(0,200,255,0.1); }
+
+.controls h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-muted); margin-bottom: 0.75rem; }
+.controlGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.5rem; }
+.controlRow { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; }
+.kbd { background: var(--c-surface2); border: 1px solid var(--c-border); border-radius: 4px; padding: 0.2rem 0.5rem; font-size: 0.8rem; font-family: monospace; color: var(--c-accent); white-space: nowrap; }
+
+/* Game area */
+.gameArea { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.viewport { position: relative; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--c-border); }
+.scene { display: block; width: 100%; }
+
+.hud { position: absolute; inset: 0; pointer-events: none; }
+.hud > button { pointer-events: all; }
+
+.hudSpeed { position: absolute; bottom: 2rem; left: 2rem; display: flex; align-items: baseline; gap: 0.4rem; }
+.hudSpeedNum { font-family: var(--font-title); font-size: 3.5rem; color: var(--c-accent); line-height: 1; text-shadow: 0 0 20px rgba(0,200,255,0.5); }
+.hudSpeedUnit { font-size: 0.9rem; color: var(--c-muted); }
+
+.hudTimer { position: absolute; top: 1rem; left: 50%; transform: translateX(-50%); font-family: var(--font-title); font-size: 2rem; letter-spacing: 0.1em; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
+
+.hudAlt { position: absolute; bottom: 2rem; right: 8rem; display: flex; flex-direction: column; align-items: flex-end; font-size: 0.75rem; }
+.hudAlt span { color: var(--c-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+.hudAlt strong { font-size: 1.4rem; color: var(--c-text); }
+
+.hudCombo { position: absolute; top: 4.5rem; left: 50%; transform: translateX(-50%); text-align: center; animation: fadeIn 0.2s ease; }
+.comboX { display: block; font-family: var(--font-title); font-size: 3rem; color: var(--c-gold); text-shadow: 0 0 30px rgba(255,215,0,0.6); }
+.comboScore { font-size: 0.85rem; color: var(--c-muted); }
+
+.airborneBadge { position: absolute; top: 1rem; left: 50%; transform: translateX(-50%); background: rgba(0,200,255,0.2); border: 1px solid var(--c-accent); border-radius: 999px; padding: 0.25rem 0.9rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; color: var(--c-accent); animation: glow 1s ease infinite; margin-top: 2.5rem; }
+
+.trickFeed { position: absolute; left: 2rem; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 0.4rem; pointer-events: none; }
+.trickFeedItem { display: flex; flex-direction: column; background: rgba(0,0,0,0.6); border-left: 3px solid var(--c-accent); padding: 0.3rem 0.6rem; border-radius: 0 4px 4px 0; animation: slideIn 0.3s ease; }
+.trickName { font-size: 0.8rem; font-weight: 700; color: var(--c-accent); }
+.trickScore { font-size: 0.7rem; color: var(--c-gold); }
+
+.hint { font-size: 0.78rem; color: var(--c-muted); text-align: center; }
+
+/* Results */
+.results { display: flex; justify-content: center; padding: 2rem 0; }
+.resultsCard { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--radius); padding: 3rem 2.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; min-width: 320px; }
+.resultsTitle { font-size: 2.5rem; }
+.resultScore { display: flex; flex-direction: column; gap: 0.2rem; }
+.resultScoreNum { font-family: var(--font-title); font-size: 4rem; color: var(--c-accent); line-height: 1; }
+.medalBig { font-family: var(--font-title); font-size: 2rem; letter-spacing: 0.1em; }
+.resultStats { display: flex; gap: 2rem; font-size: 0.875rem; }
+.resultStats > div { display: flex; flex-direction: column; gap: 0.2rem; align-items: center; }
+.resultStats span { color: var(--c-muted); font-size: 0.75rem; }
+.resultStats strong { font-size: 1.1rem; }
+.resultActions { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
